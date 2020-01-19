@@ -37,23 +37,25 @@ public class JpaApplication implements CommandLineRunner {
 		logger.info("Hello World");
 
 		try {
-			Author eric = new Author("Eric", "Rowan");
+			Author seth = new Author("Seth", "Rolins");
 			Author roman = new Author("Roman", "Reign");
 
 			Publisher wwePublication = new Publisher("Tata McCgrawhill", "23 Basnta Nagar, Delhi NCR");
 			publisherRepository.save(wwePublication);
 
-			Book wwe = new Book("WWE Playback", "WWE0012", wwePublication);
+			Book raw = new Book("Monday Night Raw", "WWE0011", wwePublication);
+			Book smackdown = new Book("Smackdown Live", "WWE0012", wwePublication);
 
-			eric.getBooks().add(wwe);
-			roman.getBooks().add(wwe);
+			seth.getBooks().add(raw);
+			roman.getBooks().add(smackdown);
 
-			wwe.getAuthors().add(eric);
-			wwe.getAuthors().add(roman);
+			raw.getAuthors().add(seth);
+			smackdown.getAuthors().add(roman);
 
-			authorsRepository.save(eric);
+			authorsRepository.save(seth);
 			authorsRepository.save(roman);
-			booksRepository.save(wwe);
+			booksRepository.save(raw);
+			booksRepository.save(smackdown);
 
 		}
 		catch(NullPointerException e) {
